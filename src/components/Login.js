@@ -9,7 +9,7 @@ const Login = () =>{
     return(
         <div id='login-page'>
             <div id='login-card'>
-                <h2>Welcome to ChatCodes!</h2>
+                <h2 style={{color:"white" , fontSize:30}}>Welcome to ChatCodes!</h2>
                 <div
                     className='login-button google'
                     onClick={() => signInWithRedirect(authentication,new GoogleAuthProvider())}
