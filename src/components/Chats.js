@@ -4,7 +4,7 @@ import {  ChatEngine } from 'react-chat-engine';
 import { authentication } from '../firebase';
 
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
+import axios from 'axios';//for making diffrent api's call!
 
 const Chats = () =>{
     const history = useHistory();
@@ -31,7 +31,7 @@ const Chats = () =>{
         }
         axios.get('https://api.chatengine.io/users/me',{
             headers:{
-                "project-id":"8febc21e-e228-42ae-a892-f89b512cac13",
+                "project-id":process.env.REACT_APP_CHAT_ENGINE_ID,
                 "user-name":user.email,
                 "user-secret":user.uid
             }
@@ -50,7 +50,7 @@ const Chats = () =>{
 
                     axios.post('https://api.chatengine.io/users',
                          formData,
-                         {headers:{"private-key":"7642851b-3929-4a89-9a03-0bb12330949b"}}
+                         {headers:{"private-key":process.env.REACT_APP_CHAT_ENGINE_KEY}}
                     )
                     .then(()=>setLoading(false))
                     .catch((err)=>console.log(err))
@@ -75,7 +75,7 @@ const Chats = () =>{
 
                 <ChatEngine
                     height="calc(100vh-66px)"
-                    projectID="8febc21e-e228-42ae-a892-f89b512cac13"
+                    projectID={process.env.REACT_APP_CHAT_ENGINE_ID}
                     userName={user.email}
                     userSecret={user.uid}
                 />
